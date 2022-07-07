@@ -2,6 +2,8 @@
 
 To-Do
 
+1. Verticle/Horizontal cuttingboard img.
+
 Notepad (ideas and stuff)
 
 Mobile Version - javascript to populate cards and randomize each time - in an array, shuffle array (fisher yates?) card flip
@@ -25,3 +27,5 @@ Desktop
 Title bar 100% across the top, with Timer inside of it
 Instructions/Start on the right
 when all matches found, reset button?
+
+buttons on click shake? or animate
