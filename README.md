@@ -3,6 +3,7 @@
 To-Do
 
 1. Verticle/Horizontal cuttingboard img.
+2. Nori/Face down img
 
 Notepad (ideas and stuff)
 
