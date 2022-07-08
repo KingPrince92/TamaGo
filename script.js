@@ -11,6 +11,25 @@ const sushiCards = [
 
 const cardContainer = document.querySelector(".card-container");
 
+const createCard = () => {
+  let card = document.createElement("div");
+  let front = document.createElement("div");
+  let back = document.createElement("div");
+  card.classList.add("card");
+  front.classList.add("front");
+  back.classList.add("back");
+  back.setAttribute("data-name", createCard.name);
+};
+
+// Main.addEventListner("click", (e) => {
+//   if (e.target.parentNode.parentNode.parentNode.classList.contains("flip-card")) {
+//     e.target.paretNode.parentNode.classList.add("clicked");
+//     setTimeout(()=> {
+//       e.target.parentNode.parentNode.classList.remove("clicked");
+//   }1000);
+//   }
+// });
+
 // const pickRandom = (array, items) => {
 //   const clonedArray = [...array];
 //   const randomPicks = [];
