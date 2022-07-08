@@ -45,6 +45,8 @@ header {
 .card-container {
   background-color: brown;
   min-height: calc(100vh - 260px);
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .start-button {
@@ -57,4 +59,10 @@ header {
   justify-content: center;
   align-items: center;
   color: white;
+}
+
+.back {
+  list-style: none;
+  border-radius: 50%;
+  background-image: url(assets/nori.png);
 }
