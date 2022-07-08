@@ -2,8 +2,10 @@
 
 To-Do
 
-1. Verticle/Horizontal cuttingboard img.
-2. Nori/Face down img
+1. Get cards on the page via a create asset function
+2. Position them for mobile
+3. Flipping/Matching code
+4. Get cards to go away once matched
 
 Notepad (ideas and stuff)
 
