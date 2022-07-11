@@ -121,7 +121,7 @@ footer {
   color: greenyellow;
   background-color: black;
   width: 50px;
-  margin-right: 50px;
+  margin-right: 25px;
   padding: 10px;
   display: flex;
   justify-content: center;
@@ -132,18 +132,19 @@ footer {
 .card-container {
   background-color: brown;
   background-image: url(assets/mobile_woodtexture.png);
-  background-size: 100%;
+  background-size: cover;
   min-height: calc(100vh - 276px);
   border-radius: 10%;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-around;
   box-sizing: border-box;
   align-items: center;
   margin: 8px 8px;
   list-style: none;
-  padding: 0;
+  padding: 50px;
   perspective: 1000px;
+  background-repeat: no-repeat;
 }
 
 .start-button {
@@ -159,6 +160,24 @@ footer {
   margin-top: 16px;
 }
 
+.start-button:hover {
+  background-color: #ffc619;
+  color: #5e0c14;
+  font-weight: 900;
+}
+
+.reset {
+  margin-right: 50px;
+}
+
+.disabled {
+  color: #757575;
+}
+
+.disabled:hover {
+  color: #757575;
+  background-color: #757575;
+}
 .back {
   border-radius: 50%;
   background-image: url(assets/nori.png);
@@ -202,4 +221,15 @@ footer {
 
 .card.flip {
   transform: rotateY(180deg);
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+@media only screen and (min-width: 666px) {
+  .card-container {
+    background-image: url(assets/desktop_woodtexture.png);
+    background-size: cover;
+  }
 }

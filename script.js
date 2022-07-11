@@ -1,5 +1,6 @@
 "use strict";
 
+//declarations
 const sushiCards = [
   { name: "salmon", url: "assets/salmon.png" },
   { name: "salmon", url: "assets/salmon.png" },
@@ -18,7 +19,46 @@ const sushiCards = [
 const infoBtn = document.querySelector("#info-btn");
 const playBtn = document.querySelector("#play-btn");
 const modalBox = document.querySelector("#modal-box");
+const startButton = document.querySelector(".start-button");
 const cardContainer = document.querySelector(".card-container");
+let stopwatch = document.querySelector(".timer");
+let time = 10;
+let timer = null;
+const reset = document.querySelector(".reset");
+let cardsChosen = [];
+let cardsChosenId = [];
+
+// listen for open click/instruction modal
+infoBtn.addEventListener("click", openModal);
+playBtn.addEventListener("click", closeModal);
+
+function openModal() {
+  modalBox.style.display = "flex";
+}
+
+function closeModal() {
+  modalBox.style.display = "none";
+}
+//timer
+const startTimer = () => {
+  startButton.classList.add("hide");
+  reset.classList.remove("hide");
+  time = 60;
+  timer = setInterval(() => {
+    stopwatch.innerHTML = `${time}`;
+    time--;
+    if (time === 0) {
+      clearInterval(timer);
+      startButton.classList.remove("hide");
+      reset.classList.add("hide");
+    }
+  }, 1000);
+};
+startButton.addEventListener("click", startTimer);
+reset.addEventListener("click", () => {
+  clearInterval(timer);
+  startTimer();
+});
 
 // shuffling of cards
 const shuffle = (array) => {
@@ -34,6 +74,7 @@ const shuffle = (array) => {
   return array;
 };
 
+//code for creating the cards
 const createBoard = (array) => {
   shuffle(array);
   array.forEach((item) => {
@@ -49,34 +90,45 @@ const createBoard = (array) => {
     cardContainer.append(card);
   });
 };
-createBoard(sushiCards);
-const cards = document.querySelectorAll(".card");
-function flipCard() {
-  this.classList.toggle("flip");
-}
 
-// listen for open click
-infoBtn.addEventListener("click", openModal);
-playBtn.addEventListener("click", closeModal);
+const flipCard = (e) => {
+  if (e.target.parentNode.classList.contains("card")) {
+    e.target.parentNode.classList.add("flip");
+    cardsChosen.push(e.target.parentNode);
+    if (cardsChosen.length === 2) {
+      checkForMatch();
+    }
+  }
+};
+cardContainer.addEventListener("click", flipCard);
+//matching/gameplay code
 
-function openModal() {
-  modalBox.style.display = "flex";
-}
+let checkForMatch = () => {
+  if (
+    cardsChosen[0].getAttribute("data-name") ===
+    cardsChosen[1].getAttribute("data-name")
+  ) {
+    setTimeout(() => {
+      cardsChosen[0].classList.add("hidden");
+      cardsChosen[1].classList.add("hidden");
+      cardsChosen = [];
+    }, 1000);
+  } else {
+    setTimeout(() => {
+      cardsChosen[1].classList.remove("flip");
+      cardsChosen[0].classList.remove("flip");
+      cardsChosen = [];
+    }, 500);
+  }
+};
 
-function closeModal() {
-  modalBox.style.display = "none";
-}
-
-// card flip
-cards.forEach((card) => card.addEventListener("click", flipCard));
-
-// Main.addEventListner("click", (e) => {
-//   if (e.target.parentNode.parentNode.parentNode.classList.contains("flip-card")) {
-//     e.target.paretNode.parentNode.classList.add("clicked");
-//     setTimeout(()=> {
-//       e.target.parentNode.parentNode.classList.remove("clicked");
-//   }1000);
-//   }
-// });
+// button for creating the board
+const beginGame = (e) => {
+  createBoard(sushiCards);
+  e.target.classList.add("disabled");
+  startButton.removeEventListener("click", beginGame);
+  startButton.removeEventListener("click", startTimer);
+};
+startButton.addEventListener("click", beginGame);
 
 //card front, card back two classes with same CSS, card content = image of sushi front
