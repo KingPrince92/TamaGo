@@ -7,6 +7,7 @@ body {
 
 body {
   background-color: black;
+  font-family: "Fredoka One", cursive;
 }
 header {
   width: 100%;
@@ -68,6 +69,7 @@ footer {
   margin: 8px 8px;
   list-style: none;
   padding: 0;
+  perspective: 1000px;
 }
 
 .start-button {
@@ -84,9 +86,22 @@ footer {
 }
 
 .back {
-  list-style: none;
   border-radius: 50%;
   background-image: url(assets/nori.png);
+  background-position: center;
+  height: 125px;
+  width: 125px;
+  position: absolute;
+  backface-visibility: hidden;
+}
+.front {
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 125px;
+  width: 125px;
+  position: absolute;
 }
 
 .card {
@@ -94,5 +109,23 @@ footer {
   width: 125px;
   border-radius: 50%;
   background-color: black;
+  perspective: 1000px;
   margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+  position: relative;
+}
+
+.card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
 }
