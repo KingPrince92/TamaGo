@@ -223,7 +223,7 @@ footer {
   transform: rotateY(180deg);
 }
 
-.hidden {
+.matched {
   visibility: hidden;
 }
 

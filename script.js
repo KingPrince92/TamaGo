@@ -109,8 +109,8 @@ let checkForMatch = () => {
     cardsChosen[1].getAttribute("data-name")
   ) {
     setTimeout(() => {
-      cardsChosen[0].classList.add("hidden");
-      cardsChosen[1].classList.add("hidden");
+      cardsChosen[0].classList.add("matched");
+      cardsChosen[1].classList.add("matched");
       cardsChosen = [];
     }, 1000);
   } else {
