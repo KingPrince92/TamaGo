@@ -16,17 +16,35 @@
   </head>
   <body>
     <header><img class="tamagologo" src="assets/tamago-logo.png" /></header>
+    <div id="modal-box" class="modal">
+      <div class="modal-content">
+        <p id="welcome">Welcome to tamaGO!</p> 
+        <p class="intructions">
+          <span class="rules">Objective:</span> match all of the cards in under
+          30 seconds.
+        </p>
+        <p class="instructions">
+          <span class="rules">Match:</span> a match is made when the two cards
+          turned picture-side-up are identical.
+        </p>
+        <div class="button-container">
+          <button id="play-btn" class="button">PLAY</button>
+        </div>
+      </div>
+    </div>
     <main>
       <div class="timer-container">
-        <div class="info"><i class="fa-solid fa-circle-question"></i></div>
-        <div class="timer">00:00</div>
+        <button id="info-btn" class="button">INSTRUCTIONS</button>
+        <div class="timer"></div>
       </div>
 
 
     <div class="card-container">
     </div>
 
-    <footer><div class="start-button">Start!</div></footer>
+    <footer>
+      <div class="start-button">START</div>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

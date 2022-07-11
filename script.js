@@ -15,8 +15,12 @@ const sushiCards = [
   { name: "veggie", url: "assets/veggie.png" },
 ];
 
+const infoBtn = document.querySelector("#info-btn");
+const playBtn = document.querySelector("#play-btn");
+const modalBox = document.querySelector("#modal-box");
 const cardContainer = document.querySelector(".card-container");
 
+// shuffling of cards
 const shuffle = (array) => {
   let i = array.length,
     j,
@@ -51,6 +55,19 @@ function flipCard() {
   this.classList.toggle("flip");
 }
 
+// listen for open click
+infoBtn.addEventListener("click", openModal);
+playBtn.addEventListener("click", closeModal);
+
+function openModal() {
+  modalBox.style.display = "flex";
+}
+
+function closeModal() {
+  modalBox.style.display = "none";
+}
+
+// card flip
 cards.forEach((card) => card.addEventListener("click", flipCard));
 
 // Main.addEventListner("click", (e) => {
