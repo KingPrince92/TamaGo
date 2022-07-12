@@ -15,7 +15,6 @@ const sushiCards = [
   { name: "veggie", url: "assets/veggie.png" },
   { name: "veggie", url: "assets/veggie.png" },
 ];
-
 const infoBtn = document.querySelector("#info-btn");
 const playBtn = document.querySelector("#play-btn");
 const modalBox = document.querySelector("#modal-box");
@@ -28,15 +27,16 @@ const reset = document.querySelector(".reset");
 let cardsChosen = [];
 let cardsChosenId = [];
 let counter = 0;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 359d348b37ccc4b8152aeacb8b24eb50cfd5f122
 // listen for open click/instruction modal
 infoBtn.addEventListener("click", openModal);
 playBtn.addEventListener("click", closeModal);
-
 function openModal() {
   modalBox.style.display = "flex";
 }
-
 function closeModal() {
   modalBox.style.display = "none";
 }
@@ -60,7 +60,6 @@ reset.addEventListener("click", () => {
   clearInterval(timer);
   startTimer();
 });
-
 // shuffling of cards
 const shuffle = (array) => {
   let i = array.length,
@@ -74,7 +73,6 @@ const shuffle = (array) => {
   }
   return array;
 };
-
 //code for creating the cards
 const createBoard = (array) => {
   shuffle(array);
@@ -91,7 +89,6 @@ const createBoard = (array) => {
     cardContainer.append(card);
   });
 };
-
 const flipCard = (e) => {
   if (e.target.parentNode.classList.contains("card")) {
     e.target.parentNode.classList.add("flip");
@@ -103,7 +100,6 @@ const flipCard = (e) => {
 };
 cardContainer.addEventListener("click", flipCard);
 //matching/gameplay code
-
 let checkForMatch = () => {
   if (
     cardsChosen[0].getAttribute("data-name") ===
@@ -124,7 +120,10 @@ let checkForMatch = () => {
     }, 500);
   }
 };
+<<<<<<< HEAD
 
+=======
+>>>>>>> 359d348b37ccc4b8152aeacb8b24eb50cfd5f122
 //plug in winning modal!!
 let checkForWin = () => {
   if (counter === 6) {
@@ -139,5 +138,4 @@ const beginGame = (e) => {
   startButton.removeEventListener("click", startTimer);
 };
 startButton.addEventListener("click", beginGame);
-
 //card front, card back two classes with same CSS, card content = image of sushi front
