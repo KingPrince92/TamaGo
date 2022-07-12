@@ -4,7 +4,7 @@ body,
 p {
   padding: 0;
   margin: 0;
-  font-family: "Fredoka", sans-serif;
+  font-family: "Fredoka One", cursive;
   font-size: 16px;
 }
 
@@ -16,7 +16,7 @@ body {
 header {
   width: 100%;
   height: 100px;
-  background-color: gray;
+  background-color: #5e0c14;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,6 +27,8 @@ header {
   object-fit: contain;
   width: 100%;
   height: 100px;
+  position: relative;
+  top: 14px;
 }
 
 .button {
@@ -47,6 +49,17 @@ header {
   padding: 10px 15px;
   border: none;
   border-radius: 10px;
+}
+
+.button:active {
+  color: #ffc619;
+  background-color: #5e0c14;
+  letter-spacing: 0.75px;
+  font-weight: 600;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 10px;
+  transform: rotate(0.1turn);
 }
 
 .modal {
@@ -71,7 +84,6 @@ header {
   border-width: 15px;
   border-color: #5e0c14;
   border-radius: 75px;
-  margin: 50% auto;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -104,7 +116,7 @@ footer {
 }
 
 .timer-container {
-  background-color: rgb(146, 143, 143);
+  background-color: rgba(94, 12, 20, 0.75);
   width: 100%;
   height: 75px;
   margin-top: 10px;
@@ -150,20 +162,20 @@ footer {
 .start-button {
   width: 100%;
   height: 75px;
-  background-color: rgb(105, 105, 105);
+  background-color: #5e0c14;
   position: fixed;
   bottom: 0;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: #ffc619;
   margin-top: 16px;
 }
 
 .start-button:hover {
   background-color: #ffc619;
   color: #5e0c14;
-  font-weight: 900;
+  font-weight: 600;
 }
 
 .reset {
@@ -223,6 +235,10 @@ footer {
   transform: rotateY(180deg);
 }
 
+.hide {
+  display: none;
+}
+
 .matched {
   visibility: hidden;
 }
@@ -231,5 +247,12 @@ footer {
   .card-container {
     background-image: url(assets/desktop_woodtexture.png);
     background-size: cover;
+    width: 48em;
   }
+}
+
+.mainguy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

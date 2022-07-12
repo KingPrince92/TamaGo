@@ -15,51 +15,63 @@ const sushiCards = [
   { name: "veggie", url: "assets/veggie.png" },
   { name: "veggie", url: "assets/veggie.png" },
 ];
+
 const infoBtn = document.querySelector("#info-btn");
 const playBtn = document.querySelector("#play-btn");
-const modalBox = document.querySelector("#modal-box");
+const welcomeBox = document.querySelector("#welcome-box");
 const startButton = document.querySelector(".start-button");
 const cardContainer = document.querySelector(".card-container");
+const popUpLose = document.querySelector(".lose");
+const popUpWin = document.querySelector(".winning");
 let stopwatch = document.querySelector(".timer");
 let time = 10;
 let timer = null;
 const reset = document.querySelector(".reset");
+const playAgain = document.querySelector(".play-again");
 let cardsChosen = [];
 let cardsChosenId = [];
 let counter = 0;
-<<<<<<< HEAD
 
-=======
->>>>>>> 359d348b37ccc4b8152aeacb8b24eb50cfd5f122
-// listen for open click/instruction modal
+function openModal() {
+  welcomeBox.style.display = "flex";
+}
+
+function closeModal() {
+  welcomeBox.style.display = "none";
+}
 infoBtn.addEventListener("click", openModal);
 playBtn.addEventListener("click", closeModal);
-function openModal() {
-  modalBox.style.display = "flex";
-}
-function closeModal() {
-  modalBox.style.display = "none";
-}
+
 //timer
 const startTimer = () => {
-  startButton.classList.add("hide");
+  // startButton.classList.add("hide");
   reset.classList.remove("hide");
   time = 60;
   timer = setInterval(() => {
     stopwatch.innerHTML = `${time}`;
     time--;
-    if (time === -1) {
+    if (time < 0) {
       clearInterval(timer);
       startButton.classList.remove("hide");
-      reset.classList.add("hide");
+      popUpLose.classList.toggle("hide");
     }
   }, 1000);
 };
+
+popUpLose.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal-content") === false) {
+    popUpLose.classList.toggle("hide");
+  }
+});
+
 startButton.addEventListener("click", startTimer);
 reset.addEventListener("click", () => {
+  cardContainer.innerHTML = "";
   clearInterval(timer);
+  createBoard(sushiCards);
   startTimer();
 });
+
 // shuffling of cards
 const shuffle = (array) => {
   let i = array.length,
@@ -73,6 +85,7 @@ const shuffle = (array) => {
   }
   return array;
 };
+
 //code for creating the cards
 const createBoard = (array) => {
   shuffle(array);
@@ -89,6 +102,7 @@ const createBoard = (array) => {
     cardContainer.append(card);
   });
 };
+
 const flipCard = (e) => {
   if (e.target.parentNode.classList.contains("card")) {
     e.target.parentNode.classList.add("flip");
@@ -100,6 +114,7 @@ const flipCard = (e) => {
 };
 cardContainer.addEventListener("click", flipCard);
 //matching/gameplay code
+
 let checkForMatch = () => {
   if (
     cardsChosen[0].getAttribute("data-name") ===
@@ -120,16 +135,21 @@ let checkForMatch = () => {
     }, 500);
   }
 };
-<<<<<<< HEAD
 
-=======
->>>>>>> 359d348b37ccc4b8152aeacb8b24eb50cfd5f122
 //plug in winning modal!!
 let checkForWin = () => {
   if (counter === 6) {
     console.log("You Win");
+    popUpWin.classList.toggle("hide");
+    clearInterval(timer);
   }
 };
+
+popUpWin.addEventListener("click", (e) => {
+  if (e.target.classList.contains("modal-content") === false) {
+    popUpWin.classList.toggle("hide");
+  }
+});
 // button for creating the board
 const beginGame = (e) => {
   createBoard(sushiCards);
@@ -138,4 +158,5 @@ const beginGame = (e) => {
   startButton.removeEventListener("click", startTimer);
 };
 startButton.addEventListener("click", beginGame);
+
 //card front, card back two classes with same CSS, card content = image of sushi front
