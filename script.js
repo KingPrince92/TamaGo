@@ -27,6 +27,7 @@ let timer = null;
 const reset = document.querySelector(".reset");
 let cardsChosen = [];
 let cardsChosenId = [];
+let counter = 0;
 
 // listen for open click/instruction modal
 infoBtn.addEventListener("click", openModal);
@@ -47,7 +48,7 @@ const startTimer = () => {
   timer = setInterval(() => {
     stopwatch.innerHTML = `${time}`;
     time--;
-    if (time === 0) {
+    if (time === -1) {
       clearInterval(timer);
       startButton.classList.remove("hide");
       reset.classList.add("hide");
@@ -112,6 +113,8 @@ let checkForMatch = () => {
       cardsChosen[0].classList.add("matched");
       cardsChosen[1].classList.add("matched");
       cardsChosen = [];
+      counter++;
+      checkForWin();
     }, 1000);
   } else {
     setTimeout(() => {
@@ -122,6 +125,12 @@ let checkForMatch = () => {
   }
 };
 
+//plug in winning modal!!
+let checkForWin = () => {
+  if (counter === 6) {
+    console.log("You Win");
+  }
+};
 // button for creating the board
 const beginGame = (e) => {
   createBoard(sushiCards);

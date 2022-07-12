@@ -2,7 +2,6 @@
 
 To-Do
 
-1. Change 'hidden' class on matched cards to 'matched'
 2. Win will be when matched array.length = 6??
 3. When win is triggered then win message pops up
 4. Figure out reset button
